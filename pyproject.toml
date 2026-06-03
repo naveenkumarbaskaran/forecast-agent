@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "forecast-agent-ai"
+version = "0.1.0"
+description = "Anthropic-powered time-series forecasting agent with scenario modeling and narrative output."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Forecast Agent", email = "agent@example.com" },
+]
+keywords = ["anthropic", "claude", "forecasting", "time-series", "ai-agent"]
+
+dependencies = [
+    "anthropic>=0.40.0",
+    "click>=8.1",
+    "rich>=13.0",
+    "pandas>=2.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+forecast = "forecast_agent.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["forecast_agent"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
